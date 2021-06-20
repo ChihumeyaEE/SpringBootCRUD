@@ -18,8 +18,13 @@ public class EmployeeController {
         return employeeService.createEmployee(employee);
     }
 
+//    @PostMapping("/add")
+//    public Employee addEmployee(@RequestBody Employee employee, Integer deptID){  //Receives JSON Data
+//        return employeeService.createEmployee(employee, deptID);
+//    }
+
     @PostMapping("/addEmployees")
-    public List<Employee> addEmployees(@RequestBody List<Employee> employees ){
+    public List<Employee> addEmployees(@RequestBody List<Employee> employees){
         return employeeService.createEmployees(employees);
     }
 
@@ -40,8 +45,13 @@ public class EmployeeController {
 
     }
 
-    @PutMapping("/updateDepartment/{employeeID}/{deptID}")
-    public String updateEmployeeDept(@PathVariable("employeeID") int employeeID, @PathVariable int deptID){
+//    @PutMapping("/updateDepartment/{employeeID}/{deptID}")
+//    public String updateEmployeeDept(@PathVariable("employeeID") int employeeID, @PathVariable int deptID){
+//        return employeeService.updateEmployeeDetails(employeeID,deptID);
+//    }
+
+        @PutMapping("/updateDepartment/{employeeID}")
+    public String updateEmployeeDept(@PathVariable("employeeID") int employeeID, @RequestBody int deptID){
         return employeeService.updateEmployeeDetails(employeeID,deptID);
     }
 

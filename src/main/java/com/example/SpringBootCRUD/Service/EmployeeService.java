@@ -22,6 +22,12 @@ public class EmployeeService {
     public Employee createEmployee(Employee employees){
         return employeeRepository.save(employees);
     }
+//    public Employee createEmployee(Employee employees, Integer deptID){
+//        Department department= departmentRepository.findById(deptID).orElseThrow(() -> new IllegalStateException(
+//                "Department with id " + deptID +" does not exist"));
+//
+//        return employeeRepository.save(employees);
+//    }
 
     public List<Employee> createEmployees(List<Employee> employees){
          return employeeRepository.saveAll(employees);
@@ -44,7 +50,7 @@ public class EmployeeService {
     @Transactional
     public String updateEmployeeDetails(int employeeID, int deptID) {
         Employee employee= employeeRepository.findById(employeeID).orElseThrow(() -> new IllegalStateException(
-                "student with id " + employeeID +" does not exist"));
+                "Employee with id " + employeeID +" does not exist"));
 
         Department department= departmentRepository.findById(deptID).orElseThrow(() -> new IllegalStateException(
                 "Department with id " + deptID +" does not exist"));
@@ -58,6 +64,9 @@ public class EmployeeService {
 
 
     public String deleteEmployeeById(int id) {
+        Employee employee= employeeRepository.findById(id).orElseThrow(() -> new IllegalStateException(
+                "Employee with id " + id +" does not exist"));
+
         employeeRepository.deleteById(id);
         return "User got deleted";
     }

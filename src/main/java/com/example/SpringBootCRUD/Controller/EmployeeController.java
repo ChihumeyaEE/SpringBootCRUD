@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/Employee")
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @PostMapping("/addEmployee")
+    @PostMapping("/add")
     public Employee addEmployee(@RequestBody Employee employee){  //Receives JSON Data
         return employeeService.createEmployee(employee);
     }
@@ -22,7 +23,7 @@ public class EmployeeController {
         return employeeService.createEmployees(employees);
     }
 
-    @GetMapping("/employee/{id}")
+    @GetMapping("/{id}")
     public Employee getEmployeebyId(@PathVariable int id){
         return employeeService.getEmployeebyId(id);
     }
@@ -32,19 +33,19 @@ public class EmployeeController {
         return employeeService.getEmployees();
     }
 
-    @PutMapping("/updateEmployee")
+    @PutMapping("/update")
     public Employee updateEmployee(@RequestBody Employee employee){
         employeeService.updateEmployee(employee);
         return employee;
 
     }
 
-    @PutMapping("/updateEmployeeDept/{employeeID}/{deptID}")
-    public void updateEmployeeDept(@PathVariable("employeeID") int employeeID, @PathVariable int deptID){
-        employeeService.updateEmployeeDetails(employeeID,deptID);
+    @PutMapping("/updateDepartment/{employeeID}/{deptID}")
+    public String updateEmployeeDept(@PathVariable("employeeID") int employeeID, @PathVariable int deptID){
+        return employeeService.updateEmployeeDetails(employeeID,deptID);
     }
 
-    @DeleteMapping("/deleteEmployee/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteEmployee(@PathVariable int id){
         return employeeService.deleteEmployeeById(id);
     }

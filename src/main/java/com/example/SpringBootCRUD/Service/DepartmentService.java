@@ -36,7 +36,7 @@ public class DepartmentService {
 
     public String deleteDepartmentById(int id) {
         departmentRepository.deleteById(id);
-        return "User got deleted";
+        return "Department got deleted";
     }
 
 }

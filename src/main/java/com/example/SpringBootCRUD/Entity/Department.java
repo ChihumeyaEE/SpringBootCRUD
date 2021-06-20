@@ -19,4 +19,36 @@ public class Department {
     private String name;
     private int salary_min_range;
     private int salary_max_range;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getSalary_min_range() {
+        return salary_min_range;
+    }
+
+    public void setSalary_min_range(int salary_min_range) {
+        this.salary_min_range = salary_min_range;
+    }
+
+    public int getSalary_max_range() {
+        return salary_max_range;
+    }
+
+    public void setSalary_max_range(int salary_max_range) {
+        this.salary_max_range = salary_max_range;
+    }
 }

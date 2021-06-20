@@ -5,9 +5,7 @@ import com.example.SpringBootCRUD.Repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -35,19 +33,15 @@ public class EmployeeService {
 
         employeeRepository.save(employee);
 
-     }
-
-    @Transactional
-    public void updateEmployeeDetails(int employeeID, int deptID) {
-        Employee employee= employeeRepository.findById(employeeID).orElseThrow(() -> new IllegalStateException(
-                "student with id " + employeeID +" does not exist"));
-
-        if(deptID != 0 && !Objects.equals(employee.getDeptID(), deptID)){
-            employee.setDeptID(deptID);
-        }
-
     }
-
+//    public void employeeNotFound(int id){
+//        Optional<Employee> optionalemployee = employeeRepository.findById(id);
+//        if(optionalemployee.isPresent()){
+//
+//        }else{
+//
+//        }
+//    }
 
     public String deleteEmployeeById(int id) {
         employeeRepository.deleteById(id);
